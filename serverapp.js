@@ -15,7 +15,7 @@ var flipp = {
     firebase.database().ref("Lights").on('value', function (snapshot) {
       var result = $("<div>");
       result.text(JSON.stringify(snapshot.val()));
-      $("#results").append(result);
+      $("#results").prepend(result);
 
       // TODO: Call PHP here and make lights blink
     });
