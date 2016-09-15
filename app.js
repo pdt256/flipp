@@ -25,7 +25,8 @@ var flipp = {
     firebase.initializeApp(config);
 
     $('.owl-carousel').owlCarousel({
-      loop: true
+        loop: true,
+        margin: 30
     });
   },
 

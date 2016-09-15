@@ -1,4 +1,4 @@
-html, body {
+html, body, div.app {
     height:100%;
     width:100%;
     margin:0;
@@ -10,6 +10,18 @@ body {
     background-size:100% 100%;
 }
 
+div.content {
+    height:75%;
+}
+
 .owl-carousel div {
     color:#ffffff;
+    height:25%;
+    width:100%;
+}
+
+div.app {
+    background-image: url("images/gradientbg.png");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
 }
