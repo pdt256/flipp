@@ -20,6 +20,12 @@ var flipp = {
         slideBy: 100,
         dots: false
     });
+
+    firebase.initializeApp(this.firebaseConfig);
+
+    firebase.auth().signInAnonymously().catch(function(error) {
+      // No op
+    });
   },
 
   firebaseConfig: {
@@ -29,28 +35,21 @@ var flipp = {
     storageBucket: "",
     messagingSenderId: "636127035750"
   },
-
   castVote: function(item) {
     // item is the clicked object
 
-    firebase.initializeApp(this.firebaseConfig);
+    var colorOption = firebase.database().ref("Lights/option0");
 
-    var params = {"item": item};
-
-    firebase.transaction(function(post) {
-    if (post) {
-      if (post.stars && post.stars[uid]) {
-        post.starCount--;
-        post.stars[uid] = null;
-      } else {
-        post.starCount++;
-        if (!post.stars) {
-          post.stars = {};
-        }
-        post.stars[uid] = true;
+    colorOption.transaction(function(post) {
+      if (post == null) {
+        return 0;
       }
-    }
-    return post;
+
+      return ++post;
+    }).then(function (stuff) {
+        console.log(stuff);
+      }).catch(function (error) {
+        console.log(error);
   });
 
     // var request = $.ajax({
