@@ -16,7 +16,9 @@ var flipp = {
 
     $('.owl-carousel').owlCarousel({
         loop: true,
-        margin: 30
+        margin: 30,
+        slideBy: 100,
+        dots: false
     });
   },
 
