@@ -14,40 +14,57 @@ var flipp = {
 
   init: function(){
 
-    // initialize: init firebase and carousel
-    var config = {
-      apiKey: "AIzaSyAEZ6cdb0fIZ8mTpaZAcj0xthkdUOVfztA",
-      authDomain: "flipp-a77fe.firebaseapp.com",
-      databaseURL: "https://flipp-a77fe.firebaseio.com",
-      storageBucket: "",
-      messagingSenderId: "636127035750"
-    };
-    firebase.initializeApp(config);
-
     $('.owl-carousel').owlCarousel({
         loop: true,
         margin: 30
     });
   },
 
-  firebase: {},
+  firebaseConfig: {
+    apiKey: "AIzaSyAEZ6cdb0fIZ8mTpaZAcj0xthkdUOVfztA",
+    authDomain: "flipp-a77fe.firebaseapp.com",
+    databaseURL: "https://flipp-a77fe.firebaseio.com",
+    storageBucket: "",
+    messagingSenderId: "636127035750"
+  },
 
   castVote: function(item) {
+    // item is the clicked object
+
+    firebase.initializeApp(this.firebaseConfig);
+
     var params = {"item": item};
-    var request = $.ajax({
-				data: JSON.stringify(params),
-				method: 'POST',
-				url: 'https://flipp-a77fe.firebaseio.com/.json',
-			});
 
-		request.then(function (res) {
-			if (res) {
-				console.log('success', res);
+    firebase.transaction(function(post) {
+    if (post) {
+      if (post.stars && post.stars[uid]) {
+        post.starCount--;
+        post.stars[uid] = null;
+      } else {
+        post.starCount++;
+        if (!post.stars) {
+          post.stars = {};
+        }
+        post.stars[uid] = true;
+      }
+    }
+    return post;
+  });
 
-			} else {
-				console.log('something went wrong', res);
-			}
-		});
+    // var request = $.ajax({
+		// 		data: JSON.stringify(params),
+		// 		method: 'POST',
+		// 		url: 'https://flipp-a77fe.firebaseio.com/',
+		// 	});
+    //
+		// request.then(function (res) {
+		// 	if (res) {
+		// 		console.log('success', res);
+    //
+		// 	} else {
+		// 		console.log('something went wrong', res);
+		// 	}
+		// });
   }
 
 }
