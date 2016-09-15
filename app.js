@@ -2,16 +2,8 @@ $(document).ready(function(){
 
   flipp.init();
 
-  $('.vote-icon').on('click', function(event) {
-      console.log('clicked item id', event.target.id);
-
-        //event.target = image tag, not the wrapping div... need to handle propogating events so this doesn't suck
-        flipp.castVote($(event.target).parent().attr("id"));
-    });
-
 });
 
-// jquery module pattern, call flipp.methodName() above via event listeners
 var flipp = {
 
   init: function(){
@@ -21,6 +13,13 @@ var flipp = {
         margin: 30,
         slideBy: 100,
         dots: false
+    });
+
+    $('.vote-icon').on('click', function(event) {
+      console.log('clicked item id', event.target.id);
+
+      //event.target = image tag, not the wrapping div... need to handle propogating events so this doesn't suck
+      flipp.castVote($(event.target).parent().attr("id"));
     });
 
     firebase.initializeApp(this.firebaseConfig);
@@ -37,6 +36,7 @@ var flipp = {
     storageBucket: "",
     messagingSenderId: "636127035750"
   },
+
   castVote: function(itemId) {
     var colorOption = firebase.database().ref("Lights/option" + itemId);
 
