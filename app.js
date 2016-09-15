@@ -16,10 +16,11 @@ var flipp = {
 
     // initialize: init firebase and carousel
     var config = {
-      apiKey: "<API_KEY>",
-      authDomain: "<PROJECT_ID>.firebaseapp.com",
-      databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
-      storageBucket: "<BUCKET>.appspot.com",
+      apiKey: "AIzaSyAEZ6cdb0fIZ8mTpaZAcj0xthkdUOVfztA",
+      authDomain: "flipp-a77fe.firebaseapp.com",
+      databaseURL: "https://flipp-a77fe.firebaseio.com",
+      storageBucket: "",
+      messagingSenderId: "636127035750"
     };
     firebase.initializeApp(config);
 
@@ -31,15 +32,16 @@ var flipp = {
   firebase: {},
 
   castVote: function(item) {
+    var params = {"item": item};
     var request = $.ajax({
-				data: item,
-				method: 'PUT',
-				url: 'SOMEURL',
+				data: JSON.stringify(params),
+				method: 'POST',
+				url: 'https://flipp-a77fe.firebaseio.com/.json',
 			});
 
 		request.then(function (res) {
-			if (res && res.result) {
-				// success
+			if (res) {
+				console.log('success', res);
 
 			} else {
 				console.log('something went wrong', res);
