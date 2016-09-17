@@ -20,8 +20,13 @@ div.content {
     width:100%;
 }
 
-div.app {
+.app {
     background-image: url("images/gradientbg.png");
     background-repeat:no-repeat;
     background-size:100% 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
 }

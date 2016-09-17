@@ -11,15 +11,13 @@ var flipp = {
     $('.owl-carousel').owlCarousel({
         loop: true,
         margin: 30,
-        slideBy: 100,
-        dots: false
+        slideBy: 50,
+        dots: false,
     });
 
     $('.vote-icon').on('click', function(event) {
-      console.log('clicked item id', event.target.id);
-
-      //event.target = image tag, not the wrapping div... need to handle propogating events so this doesn't suck
-      flipp.castVote($(event.target).parent().attr("id"));
+        $(this).append('<span class="heart"></span>');
+        flipp.castVote($(this).data('light-number'));
     });
 
     firebase.initializeApp(this.firebaseConfig);
@@ -47,9 +45,9 @@ var flipp = {
 
       return ++post;
       }).then(function (stuff) {
-        console.log(stuff);
+        // console.log(stuff);
       }).catch(function (error) {
-        console.log(error);
+        // console.log(error);
     });
   }
 }
