@@ -12,17 +12,20 @@ var flipp = {
       // No op
     });
 
-    firebase.database().ref("Lights").on('value', function (snapshot) {
+    firebase.database().ref("Lights").on('child_changed', function (snapshot, prevChildKey) {
       var result = $("<div>");
       result.text(JSON.stringify(snapshot.val()));
       $("#results").prepend(result);
 
       // TODO: Call PHP here and make lights blink
 
+      var optionNumber = parseInt(prevChildKey.substr(-1)) + 1;
+      console.log(prevChildKey);
+      console.log(optionNumber);
       var request = $.ajax({
         headers: {'Content-Type': "application/x-www-form-urlencoded; charset=utf-8"},
         method: 'GET',
-        url: 'http://10.14.1.227:8082/vote/' + snapshot.vote,
+        url: 'http://10.14.1.227:8082/vote/' + optionNumber,
         dataType: 'json'
       });
 
