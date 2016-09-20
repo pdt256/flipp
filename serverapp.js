@@ -22,7 +22,7 @@ var flipp = {
       var request = $.ajax({
         headers: {'Content-Type': "application/x-www-form-urlencoded; charset=utf-8"},
         method: 'GET',
-        url: '10.14.1.227:8082/vote/' + result.vote,
+        url: 'http://10.14.1.227:8082/vote/' + result.vote,
         dataType: 'json'
       });
 
