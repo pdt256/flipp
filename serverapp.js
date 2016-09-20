@@ -19,17 +19,16 @@ var flipp = {
 
       // TODO: Call PHP here and make lights blink
 
-          var request = $.ajax({
-            headers: {'Content-Type': "application/x-www-form-urlencoded; charset=utf-8"},
-            method: 'GET',
-            url: '10.14.1.227:8082/vote/1',
-            dataType: 'json'
-          });
+      var request = $.ajax({
+        headers: {'Content-Type': "application/x-www-form-urlencoded; charset=utf-8"},
+        method: 'GET',
+        url: '10.14.1.227:8082/vote/1',
+        dataType: 'json'
+      });
 
-          request.then(function (res) {
-           alert('hi');
-          })
-    );
+      request.then(function (res) {
+       alert('hi');
+      });
   },
 
   firebaseConfig: {
