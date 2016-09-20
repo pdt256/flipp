@@ -29,6 +29,7 @@ var flipp = {
       request.then(function (res) {
        alert('hi');
       });
+    })
   },
 
   firebaseConfig: {
@@ -38,4 +39,4 @@ var flipp = {
     storageBucket: "",
     messagingSenderId: "636127035750"
   }
-}
+ }
