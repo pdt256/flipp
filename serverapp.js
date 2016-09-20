@@ -33,7 +33,7 @@ var flipp = {
   },
 
   firebaseConfig: {
-    apiKey: "AIzaSyAEZ6cdb0fIZ8mTpaZAcj0xthkdUOVfztA",
+    apiKey: "AIzaSyA04tjciyskuIuWrPGKoArEqe9hD0Qyk4U",
     authDomain: "flipp-a77fe.firebaseapp.com",
     databaseURL: "https://flipp-a77fe.firebaseio.com",
     storageBucket: "",
