@@ -18,14 +18,17 @@ var flipp = {
       $("#results").prepend(result);
 
       // TODO: Call PHP here and make lights blink
-      if (typeof result.vote !== 'undefined') {
-        var request = $.ajax({
-          headers: {'Content-Type': "application/x-www-form-urlencoded; charset=utf-8"},
-          method: 'GET',
-          url: '10.14.1.227:8082/vote/' + result.vote,
-          dataType: 'json'
-        });
-      }
+
+      var request = $.ajax({
+        headers: {'Content-Type': "application/x-www-form-urlencoded; charset=utf-8"},
+        method: 'GET',
+        url: '10.14.1.227:8082/vote/' + result.vote,
+        dataType: 'json'
+      });
+
+      request.then(function (res) {
+
+      });
     })
   },
 
